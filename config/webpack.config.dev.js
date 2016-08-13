@@ -12,7 +12,7 @@ module.exports = {
     require.resolve('webpack-dev-server/client') + '?/',
     require.resolve('webpack/hot/dev-server'),
     require.resolve('./polyfills'),
-    path.join(paths.appSrc, 'app')
+    path.join(paths.appSrc, 'index')
   ],
   output: {
     // Next line is not used in dev but WebpackDevServer crashes without it:
@@ -22,7 +22,7 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    modulesDirectories: ['src', 'node_modules'],
+    modulesDirectories: ['app', 'src', 'node_modules'],
     extensions: ['', '.js', '.jsx', '.json']
   },
   resolveLoader: {
