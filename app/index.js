@@ -9,7 +9,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { /*applyRouterMiddleware,*/ Router, Route, browserHistory } from 'react-router';
+import { /*applyRouterMiddleware,*/ Router, Route, IndexRoute, browserHistory } from 'react-router';
 //import { syncHistoryWithStore } from 'react-router-redux';
 //import useScroll from 'react-router-scroll';
 import configureStore from './store/configureStore';
@@ -37,7 +37,9 @@ const store = configureStore(initialState, browserHistory);
 
 // Set up the router, wrapping all Routes in the App component
 import App from 'containers/App';
-import Workout from 'containers/Workout';
+import Homepage from 'containers/Homepage';
+import Activities from 'containers/Activities';
+import Activity from 'containers/Activity';
 //import createRoutes from './routes';
 // const rootRoute = {
 //   component: App,
@@ -58,8 +60,12 @@ ReactDOM.render(
   // </Provider>,
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={App} />
-      <Route path="/workout" component={Workout} />
+      <Route path="/" component={App}>
+        <IndexRoute component={Homepage} />
+        <Route path="/activities" component={Activities}>
+          <Route path=":id" component={Activity} />
+        </Route>
+      </Route>
     </Router>
   </Provider>,
   document.getElementById('app')

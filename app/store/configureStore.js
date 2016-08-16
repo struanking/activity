@@ -1,16 +1,19 @@
 import { createStore } from 'redux';
-import { fromJS } from 'immutable';
+import { fromJS, Map } from 'immutable';
 import throttle from 'lodash/throttle';
 import activityApp from 'reducers';
-import { loadState, saveState } from './localStorage';
+import { /*loadState,*/ saveState } from './localStorage';
+
+import mockData from './mock';
 
 const configureStore = () => {
-  const persistedState = loadState()
+  const persistedState = mockData; //loadState()
   const store = createStore(activityApp, fromJS(persistedState));
 
   store.subscribe(throttle(() => {
     saveState({
-      item: store.getState().item
+      activities: store.getState().activities,
+      tasks: store.getState().tasks
     })
   }, 2000))
 

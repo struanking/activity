@@ -23,5 +23,5 @@ server.listen(port, host, function errorCallback(err) {
     console.error(err);
   }
 
-  console.log(chalk.green('==> 🚧  Webpack deve server running on ' + host + ':' + port));
+  console.log(chalk.green('==> 🚧  Webpack dev server running on ' + host + ':' + port));
 })

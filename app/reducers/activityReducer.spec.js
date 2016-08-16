@@ -1,10 +1,9 @@
-/* */
 import { expect } from 'chai';
 import { Map, fromJS } from 'immutable';
 
-import reducer from './itemsReducer';
+import reducer from './activityReducer';
 
-describe('reducer', function () {
+describe('Activity reducer', function () {
 
   it('should set initial state', () => {
     const initialState = new Map();
@@ -12,10 +11,10 @@ describe('reducer', function () {
     expect(nextState).to.equal(fromJS({}));
   });
 
-  it('should add an item to state', () => {
+  it('should add an activity to state', () => {
     const initialState = new Map();
     const nextState = reducer(initialState, {
-      type: 'ITEM_ADD',
+      type: 'ACTIVITY_ADD',
       data: {
         id: 1,
         name: 'first'
@@ -29,13 +28,13 @@ describe('reducer', function () {
     ));
   });
 
-  it('should update an item in state', () => {
+  it('should update an activity in state', () => {
     const initialState = new Map({
       id: 1,
       name: 'foo'
     });
     const nextState = reducer(initialState, {
-      type: 'ITEM_UPDATE',
+      type: 'ACTIVITY_UPDATE',
       data: {
         id: 1,
         name: 'bar'

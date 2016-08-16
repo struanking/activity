@@ -1,8 +1,11 @@
-import { combineReducers } from 'redux';
-import itemsReducer from './itemsReducer';
+//import { combineReducers } from 'redux';
+import { combineReducers } from 'redux-immutable';
+import activityReducer from './activityReducer';
+import taskReducer from './taskReducer';
 
 const activityApp = combineReducers({
-  items: itemsReducer,
+  activities: activityReducer,
+  tasks: taskReducer,
 });
 
 export default activityApp;
